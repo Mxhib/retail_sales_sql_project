@@ -9,8 +9,19 @@ SELECT *
 FROM retail_sales_clean
 LIMIT 10;
 
--- 4.1 Sales made on a specific date
-SELECT *
-FROM retail_sales_clean
-WHERE sale_date = '2022-11-05';
+-- Total number of transactions
+SELECT COUNT(*)
+FROM retail_sales_clean;
+
+-- Total number of unique customers
+SELECT COUNT(DISTINCT customer_id)
+FROM retail_sales_clean;
+
+-- List of product categories available
+SELECT DISTINCT category
+FROM retail_sales_clean;
+
+
+
+
 
