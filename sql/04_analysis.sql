@@ -41,7 +41,7 @@ FROM retail.retail_sales_clean
 WHERE sale_date = '2022-11-05';
 
 
-                                                    ------ Retrieve Sales by Product Category ----
+                                                    ------ Retrieve Sales by Product Category ------
 
 
 -- Total revenue by product category descending
@@ -77,7 +77,7 @@ GROUP BY category
 ORDER BY avg_transaction_value DESC;
 
 
-                                                             ------ Customer Analysis ----
+                                                             ------ Customer Analysis ------
 
 -- Total spending of customers descending
 SELECT
@@ -114,4 +114,39 @@ SELECT
 FROM retail.retail_sales_clean
 GROUP BY customer_id
 ORDER BY avg_spent_per_transaction DESC;
+
+
+                                                            ----- Time based Sales Analysis ------
+                                                            
+-- Monthly sales revenue "Which months have the highest revenue?"
+SELECT
+    DATE_TRUNC('month', sale_date) AS sale_month,
+    SUM(total_sale) AS monthly_revenue
+FROM retail.retail_sales_clean
+GROUP BY sale_month
+ORDER BY sale_month;
+
+--- Number of transactions by month "Does more transactions correlate with higher revenue?"
+SELECT
+    DATE_TRUNC('month', sale_date) AS sale_month,
+    COUNT(*) AS transaction_count
+FROM retail.retail_sales_clean
+GROUP BY sale_month
+ORDER BY sale_month;
+
+-- Sales by days of the week in descending order "Which days have the highest sales?"
+SELECT
+    TO_CHAR(sale_date, 'Day') AS sale_day,
+    SUM(total_sale) AS total_revenue
+FROM retail.retail_sales_clean
+GROUP BY sale_day
+ORDER BY total_revenue DESC;
+
+-- Sales by hour of the day in descending order "What time of day sees the most sales?"
+SELECT
+    EXTRACT(HOUR FROM sale_time) AS sale_hour,
+    SUM(total_sale) AS total_revenue
+FROM retail.retail_sales_clean
+GROUP BY sale_hour
+ORDER BY total_revenue DESC;
 
