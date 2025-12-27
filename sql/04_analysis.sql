@@ -22,7 +22,8 @@ SELECT DISTINCT category
 FROM retail_sales_clean;
 
 
----- Retail Sales Analysis for 2022-11-05 ----
+                                ------ Retrieve Sales Analysis for a specific date (2022-11-05) ----
+                                
 
 -- Retrieve all sales made on 2022-11-05
 SELECT *
@@ -38,5 +39,43 @@ WHERE sale_date = '2022-11-05';
 SELECT SUM(total_sale) AS total_revenue
 FROM retail.retail_sales_clean
 WHERE sale_date = '2022-11-05';
+
+
+                                            ------ Retrieve Sales by Product Category ----
+
+
+-- Total revenue by product category descending
+SELECT
+    category,
+    SUM(total_sale) AS total_revenue
+FROM retail.retail_sales_clean
+GROUP BY category
+ORDER BY total_revenue DESC;
+
+-- Number of transactions by product category descending
+SELECT
+    category,
+    COUNT(*) AS transaction_count
+FROM retail.retail_sales_clean
+GROUP BY category
+ORDER BY transaction_count DESC;
+
+-- Total units sold by product category descending
+SELECT
+    category,
+    SUM(quantity) AS total_units_sold
+FROM retail.retail_sales_clean
+GROUP BY category
+ORDER BY total_units_sold DESC;
+
+-- Average transaction value by product category descending
+SELECT
+    category,
+    AVG(total_sale) AS avg_transaction_value
+FROM retail.retail_sales_clean
+GROUP BY category
+ORDER BY avg_transaction_value DESC;
+
+
 
 
