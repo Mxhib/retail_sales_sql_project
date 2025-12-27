@@ -22,6 +22,21 @@ SELECT DISTINCT category
 FROM retail_sales_clean;
 
 
+---- Retail Sales Analysis for 2022-11-05 ----
 
+-- Retrieve all sales made on 2022-11-05
+SELECT *
+FROM retail.retail_sales_clean
+WHERE sale_date = '2022-11-05';
+
+-- Number of transactions on a 2022-11-05
+SELECT COUNT(*) AS transactions_count
+FROM retail.retail_sales_clean
+WHERE sale_date = '2022-11-05';
+
+-- Total revenue on 2022-11-05
+SELECT SUM(total_sale) AS total_revenue
+FROM retail.retail_sales_clean
+WHERE sale_date = '2022-11-05';
 
 
