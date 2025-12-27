@@ -22,8 +22,8 @@ SELECT DISTINCT category
 FROM retail_sales_clean;
 
 
-                                ------ Retrieve Sales Analysis for a specific date (2022-11-05) ----
-                                
+                                        ------ Retrieve Sales Analysis for a specific date (2022-11-05) ----
+
 
 -- Retrieve all sales made on 2022-11-05
 SELECT *
@@ -41,7 +41,7 @@ FROM retail.retail_sales_clean
 WHERE sale_date = '2022-11-05';
 
 
-                                            ------ Retrieve Sales by Product Category ----
+                                                    ------ Retrieve Sales by Product Category ----
 
 
 -- Total revenue by product category descending
@@ -77,5 +77,41 @@ GROUP BY category
 ORDER BY avg_transaction_value DESC;
 
 
+                                                             ------ Customer Analysis ----
 
+-- Total spending of customers descending
+SELECT
+    customer_id,
+    SUM(total_sale) AS total_spent
+FROM retail.retail_sales_clean
+GROUP BY customer_id
+ORDER BY total_spent DESC
+
+
+-- Number of Transactions by Top 10 Customers descending
+SELECT
+    customer_id,
+    COUNT(*) AS transaction_count
+FROM retail.retail_sales_clean
+GROUP BY customer_id
+ORDER BY transaction_count DESC
+LIMIT 10;
+
+-- Top 10 Customers by Total Spending over $1000 descending
+SELECT
+    customer_id,
+    SUM(total_sale) AS total_spent
+FROM retail.retail_sales_clean
+GROUP BY customer_id
+HAVING SUM(total_sale) > 1000
+ORDER BY total_spent DESC
+LIMIT 10;
+
+-- Average Spending per Transaction by Customer descending
+SELECT
+    customer_id,
+    AVG(total_sale) AS avg_spent_per_transaction
+FROM retail.retail_sales_clean
+GROUP BY customer_id
+ORDER BY avg_spent_per_transaction DESC;
 
