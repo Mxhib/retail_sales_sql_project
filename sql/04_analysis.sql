@@ -117,7 +117,7 @@ ORDER BY avg_spent_per_transaction DESC;
 
 
                                                             ----- Time based Sales Analysis ------
-                                                            
+
 -- Monthly sales revenue "Which months have the highest revenue?"
 SELECT
     DATE_TRUNC('month', sale_date) AS sale_month,
@@ -150,3 +150,42 @@ FROM retail.retail_sales_clean
 GROUP BY sale_hour
 ORDER BY total_revenue DESC;
 
+                                                                    -------Key Insights Summary-------
+
+---Total Revenue 
+SELECT 
+SUM(total_sale) AS total_revenue
+FROM 
+retail.retail_sales_clean;
+
+--- Average Order Value (How much does the average customer spend per transaction?)
+SELECT 
+ROUND(AVG(total_sale), 2) AS average_order_value
+
+FROM 
+retail.retail_sales_clean;
+
+---Total number of orders placed 
+SELECT
+COUNT(*) AS total_orders
+FROM
+retail.retail_sales_clean;
+
+--- Average items per order (How many items does the average customer purchase per transaction?)
+SELECT
+ROUND(AVG(quantity), 2) AS average_items_per_order
+FROM
+retail.retail_sales_clean;
+
+--- Average Revenue per customer (How much revenue does each customer generate on average?)
+
+SELECT
+    ROUND(
+        SUM(total_sale) / COUNT(DISTINCT customer_id),
+        2
+    ) AS revenue_per_customer
+FROM retail.retail_sales_clean;
+
+
+
+                                                  
