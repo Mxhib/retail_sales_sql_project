@@ -187,5 +187,30 @@ SELECT
 FROM retail.retail_sales_clean;
 
 
+-- =====================================================
+-- 4.6 Final Business Insights & Conclusions
+-- =====================================================
+
+-- Insight 1:
+-- A small subset of customers contributes a disproportionately large share of total revenue.
+-- This suggests opportunities for loyalty programs and targeted retention campaigns.
+
+-- Insight 2:
+-- Product categories differ significantly in performance:
+-- some categories generate high transaction volume while others generate higher average order value.
+-- This indicates different pricing and promotion strategies by category may be effective.
+
+-- Insight 3:
+-- Sales show clear time-based patterns, with certain months, days, and hours consistently outperforming others.
+-- These trends can inform staffing, inventory planning, and promotional timing.
+
+-- Insight 4:
+-- Average order value and items per order suggest that customers frequently purchase multiple items per transaction,
+-- indicating strong potential for bundle offers and cross-selling strategies.
+
+-- Insight 5:
+-- Revenue per customer highlights the importance of repeat buyers in overall business performance,
+-- reinforcing the value of customer-centric marketing and personalized offers.
+
 
                                                   
