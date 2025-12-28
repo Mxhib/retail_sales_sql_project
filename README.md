@@ -26,6 +26,9 @@ Git & GitHub – version control with logical commits by analysis section
 I used PostgreSQL with VS Code because it let me work with real database data while keeping everything organized in one place. Writing my SQL in VS Code made it easier to structure the project step by step and keep track of my work as I went.
 
 **Project Structure**
+
+
+
 ![image alt](https://github.com/Mxhib/retail_sales_sql_project/blob/5f7f487ab52413f3edcebb4d7c0f26afd4760cfc/Sql%20files%20screenshot.jpg)
 
 I made sure to separate raw data, cleaning logic, and analysis into different SQL files so the entire workflow can be re-run from scratch in a clean and organized way, incase i needed to go back and check on something
